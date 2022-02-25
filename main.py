@@ -35,17 +35,6 @@ def update(name:str):
             for j in df.index:
                 if j!='ave':
                     df.loc[j,i]=df.loc[j,i]+1
-
-        s=m=0
-        for n in df[name]:
-                if m!=3:
-                    s+=n
-                    m+=1
-        df.loc['ave',name]=s/(len(df.index)-1)
-
-    # df[name]=df[name].apply(lambda y: y+1)
-       
-       
         df_json=df.to_json()
         return json.loads(df_json)
     else:
