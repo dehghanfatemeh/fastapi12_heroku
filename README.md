@@ -69,7 +69,7 @@ Now heroku will deploy your app to the Heroku servers and install the dependenci
 
 -Every new library that you install must be included in `requirements.txt`  file so that Heroku will install it.
 
--By default, we are using `gunicorn` as a master process and uvicorn as worker processes.
+-By default, we are using `gunicorn` as a master process and `uvicorn` as worker processes.
 
 Full documentation to deploy your app on Heroku using git can be found [here](https://devcenter.heroku.com/articles/git). You can also deploy your app using [Github integration](https://devcenter.heroku.com/articles/github-integration) for Heroku.
 
