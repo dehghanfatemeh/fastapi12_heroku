@@ -78,7 +78,6 @@ Full documentation to deploy your app on Heroku using git can be found [here](ht
 
 
 I enter all the libraries I need:
-
 ```python
 from fastapi import FastAPI,HTTPException
 from pydantic import BaseModel
@@ -87,11 +86,15 @@ import pandas as pd
 import requests
 ```
 
+
+
 I create an app and app2 using FastAPI:
 ```python
 app=FastAPI()
 app2=FastAPI()
 ```
+
+
 
 I am creating a dictionary of student grades that includes 4 students:
 ```python
@@ -103,10 +106,13 @@ Students={
 }
 ```
 
+
+
 I convert the created dictionary to a data frame and specify the dictionary keys as its column name:
 ```python
 df=pd.DataFrame(Students,columns=Students.keys())
 ```
+
 
 
 I create a class that inherits from BaseModel:
@@ -117,7 +123,8 @@ class stu(BaseModel):
     number2: float
     number3: float
  ```
- 
+
+
  
 Using the get method, we read the data and finally display the data as json:
 ```python
@@ -126,6 +133,8 @@ def read():
     df_json=df.to_json()
     return json.loads(df_json)
 ```
+
+
 
 Using the get method, calculate the average score of each student and finally display the output as json:
 ```python
@@ -141,8 +150,9 @@ def average():
     return json.loads(a_json)
 ```
 
-Using the post method of a new student insert and if there is such a name in students, it gives an error to the user,finally the output is displayed as json
-:
+
+
+Using the post method of a new student insert and if there is such a name in students, it gives an error to the user,finally the output is displayed as json:
 ```python
 @app.post('/insert/')
 def insert(student:stu):
@@ -153,6 +163,8 @@ def insert(student:stu):
         df_json=df.to_json()
         return json.loads(df_json)
 ```
+
+
 
 Using the update method, it only increases the name of the student entered by the unit by one and in the absence of such a name gives the user an error,
 finally the output is displayed as json:
@@ -168,7 +180,30 @@ def update(name:str):
         raise HTTPException(status_code=404,detail='This student is not available')
 ```
 
+
+
 Uses the delete method to delete only the student name entered by the user and in the absence of such a name gives the user an error,
-finally the output is displayed as json
+finally the output is displayed as json:
+```python 
+@app.delete('/delete/{name}')
+def delete(name:str):
+    if name in df.columns:
+        df.drop(columns=name,axis=1,inplace=True)
+        df_json=df.to_json()
+        return json.loads(df_json)
+    else:
+        raise HTTPException(status_code=404,detail='This student is not available')
+```
+### app2
+
+Using the Get method, displays a message for app2 in the output:
+```python
+@app2.get('/')
+def read_app2():
+    return {'msg':'App 2'}
+```
+
+
+
 
 
