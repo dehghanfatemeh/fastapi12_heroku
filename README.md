@@ -108,6 +108,17 @@ I convert the created dictionary to a data frame and specify the dictionary keys
 df=pd.DataFrame(Students,columns=Students.keys())
 ```
 
+
+I create a class that inherits from BaseModel:
+```python
+class stu(BaseModel):
+    name: str
+    number1: float
+    number2: float
+    number3: float
+ ```
+ 
+ 
 Using the get method, we read the data and finally display the data as json:
 ```python
 @app.get('/')
@@ -115,4 +126,46 @@ def read():
     df_json=df.to_json()
     return json.loads(df_json)
 ```
+
+Using the get method, calculate the average score of each student and finally display the output as json:
+```python
+@app.get('/average')
+def average():
+    a={}
+    for i in df.columns:
+        s=df[i].mean()
+        i={i:s}
+        a.update(i)
+    a=pd.Series(a)
+    a_json=a.to_json()
+    return json.loads(a_json)
+```
+
+Using the post method of a new student insert and if there is such a name in students, it gives an error to the user,finally the output is displayed as json
+:
+```python
+@app.post('/insert/')
+def insert(student:stu):
+    if student.name in df.columns:
+            raise HTTPException(status_code=404,detail='This student is available')
+    else:    
+        df[student.name]=[student.number1,student.number2,student.number3]
+        df_json=df.to_json()
+        return json.loads(df_json)
+```
+
+Using the update method, it only increases the name of the student entered by the unit by one and in the absence of such a name gives the user an error,
+finally the output is displayed as json:
+```python
+@app.put('/update/{name}')
+def update(name:str):
+    if name in df.columns:
+        for i in df.index:
+            df.loc[i,name]=df.loc[i,name]+1        
+        df_json=df.to_json()
+        return json.loads(df_json)
+    else:
+        raise HTTPException(status_code=404,detail='This student is not available')
+```
+
 
