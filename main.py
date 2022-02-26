@@ -50,12 +50,11 @@ def insert(student:stu):
 
 @app.put('/update/{name}')
 def update(name:str):
-    s=0
+
     if name in df.columns:
         for i in df.columns:
             for j in df.index:
-                if j!='ave':
-                    df.loc[j,i]=df.loc[j,i]+1        
+                df.loc[j,i]=df.loc[j,i]+1        
         df_json=df.to_json()
         return json.loads(df_json)
     else:
