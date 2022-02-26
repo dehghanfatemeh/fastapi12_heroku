@@ -78,37 +78,41 @@ Full documentation to deploy your app on Heroku using git can be found [here](ht
 
 
 I enter all the libraries I need:
-python
-python
+
+```python
 from fastapi import FastAPI,HTTPException
+from pydantic import BaseModel
 import json
 import pandas as pd
+import requests
+```
 
-I create an app using FastAPI:
- python
+I create an app and app2 using FastAPI:
+```python
 app=FastAPI()
+app2=FastAPI()
+```
 
-I am creating a dictionary of student grades that includes 3 students:
-python
+I am creating a dictionary of student grades that includes 4 students:
+```python
 Students={
     'ali':[12,17.7,18],
     'sara':[14.25,18,15.75],
     'hasan':[10,14.75,13.56],
     'reza':[11.5,16.5,13.25]
 }
+```
+
 I convert the created dictionary to a data frame and specify the dictionary keys as its column name:
-python
+```python
 df=pd.DataFrame(Students,columns=Students.keys())
+```
 
 Using the get method, we read the data and finally display the data as json:
-python
+```python
 @app.get('/')
 def read():
     df_json=df.to_json()
     return json.loads(df_json)
+```
 
-
-Using the post method, we calculate the average grades of each student and finally display the data in json:
-```python
-@app.post('/average')
-def average
