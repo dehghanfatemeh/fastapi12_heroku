@@ -10,11 +10,11 @@ If you want to contribute to the project, the best way is to fork the repository
 
 A few steps to get started:
 
-1.Clone the repository:https://github.com/dehghanfatemeh/fastapi12_heroku.git
+1.Clone the repository:`https://github.com/dehghanfatemeh/fastapi12_heroku.git`
 
-2.Install the dependencies:pip install -r requirements.txt
+2.Install the dependencies:`pip install -r requirements.txt`
 
-3.Make your changes and then git add . && git commit -m "Your commit message"
+3.Make your changes and then `git add . && git commit -m "Your commit message"`
 
 4.Create a pull request
 
@@ -22,11 +22,12 @@ A few steps to get started:
 
 
 How to start development server:
-1.First, you need to install the dependencies you have not yet: pip install -r requirements.txt
 
-2.Runpython -m uvicorn main:app --reloadin the project root directory
+1.First, you need to install the dependencies you have not yet: `pip install -r requirements.txt`
 
-3.Openhttp://127.0.0.1:8000/docs
+2.Run `python -m uvicorn main:app --reload` in the project root directory
+
+3.Open`http://127.0.0.1:8000/docs`in your browser to see the documentation
 
 
 There several options for you to deploy this app on a remote server, but here is a simple example:
@@ -35,19 +36,29 @@ One of the most popular options [Heroku](https://id.heroku.com/login), Heroku pr
 
 
 At first, you need to login from the CLI:
-
+```
 heroku login
+```
+
 This will open a web browser and prompts you to login with your account.
 
 After that you logged in via the CLI, you run the bellow command to create a new app on Heroku (if you don't want to create it manually from Heroku dashboard)
+```
+heroku create [<YOUR_APP_NAME>]
+```
+It will create an application for you with the given name (if the names is valid and is not already taken by another user).
+
 
 Then you have to connect to the remote git that Heroku holds for your app:
-
+```
 heroku git:remote -a [<YOUR_APP_NAME>]
+```
 
 And then you can push the repository to Heroku:
+```
 git push heroku master
-Now heroku will deploy your app to the Heroku servers and install the dependencies for you automatically. You can access your app from http://<YOUR_APP_NAME>.herokuapp.com
+```
+Now heroku will deploy your app to the Heroku servers and install the dependencies for you automatically. You can access your app from `http://<YOUR_APP_NAME>.herokuapp.com`
 
 
 ###### Important notes for Heroku users:
