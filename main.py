@@ -2,7 +2,10 @@ from fastapi import FastAPI,HTTPException
 from pydantic import BaseModel
 import json
 import pandas as pd
+import requests
+
 app=FastAPI()
+app2=FastAPI()
 
 Students={
     'ali':[12,17.7,18],
@@ -12,7 +15,6 @@ Students={
 }
 
 df=pd.DataFrame(Students,columns=Students.keys())
-
 
 class stu(BaseModel):
     name: str
@@ -64,3 +66,16 @@ def delete(name:str):
         return json.loads(df_json)
     else:
         raise HTTPException(status_code=404,detail='This student is not available')
+
+
+
+
+@app2.get('/')
+def read_app2():
+    return {'msg':'App 2'}
+
+
+@app2.get('/avg')
+def avg():
+    result=requests.get('https://shielded-plateau-68883.herokuapp.com/average')
+    return result.json()
