@@ -228,4 +228,8 @@ def avg():
 
 
 
+![Screenshot from 2022-02-26 17-39-44](https://user-images.githubusercontent.com/85554333/155850358-65e919b6-2873-4d24-8a28-4b0f3baef3a4.png)
+
+
+
 
