@@ -11,7 +11,7 @@ In file main.py , I created two apps that only depoted app on the web using Hero
 link : https://shielded-plateau-68883.herokuapp.com/docs#/
 
 and To output app2 (actually calling app) by typing the `uvicorn main:app2 --reload` command in the terminal
-And the X address is written in the browser and you can see the output `http://127.0.0.1:8000/docs`
+And the `http://127.0.0.1:8000/docs` address is written in the browser and you can see the output 
 
 
 
