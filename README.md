@@ -215,3 +215,8 @@ def avg():
 
 -------------------------------------
 
+Only deployed app on the web using Hiroku
+link : https://shielded-plateau-68883.herokuapp.com/docs#/
+
+
+
