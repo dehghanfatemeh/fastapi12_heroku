@@ -204,6 +204,13 @@ def read_app2():
     return {'msg':'App 2'}
 ```
 
+Using the request method, calls app and output the method takes the mean and displays it:
+```python
+@app2.get('/avg')
+def avg():
+    result=requests.get('https://shielded-plateau-68883.herokuapp.com/average')
+    return result.json()
+```
 
 
 
