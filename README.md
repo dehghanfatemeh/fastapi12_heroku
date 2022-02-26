@@ -62,13 +62,14 @@ Now heroku will deploy your app to the Heroku servers and install the dependenci
 
 
 ###### Important notes for Heroku users:
--After making changes to your code, you need to run it add . && git commit -m "Your commit message" and then git push heroku master to deploy your changes to Heroku.
 
--You can also use heroku logs to see the logs of your app on your terminal.
+-After making changes to your code, you need to run `git add . && git commit -m "Your commit message"` and then `git push heroku master` to deploy your changes to Heroku.
 
--Every new library that you install must be included in requirements.txt  file so that Heroku will install it.
+-You can also use `heroku logs` to see the logs of your app on your terminal.
 
--By default, we are using gunicorn as a master process and uvicorn as worker processes.
+-Every new library that you install must be included in `requirements.txt`  file so that Heroku will install it.
+
+-By default, we are using `gunicorn` as a master process and uvicorn as worker processes.
 
 Full documentation to deploy your app on Heroku using git can be found [here](https://devcenter.heroku.com/articles/git). You can also deploy your app using [Github integration](https://devcenter.heroku.com/articles/github-integration) for Heroku.
 
