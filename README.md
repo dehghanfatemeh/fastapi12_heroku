@@ -125,7 +125,8 @@ class stu(BaseModel):
  ```
 
 
- 
+### app 
+
 Using the get method, we read the data and finally display the data as json:
 ```python
 @app.get('/')
