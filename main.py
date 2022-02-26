@@ -43,18 +43,15 @@ def insert(student:stu):
     if student.name in df.columns:
             raise HTTPException(status_code=404,detail='This student is available')
     else:    
-        # s=(student.number1+student.number2+student.number3)/3
         df[student.name]=[student.number1,student.number2,student.number3]
         df_json=df.to_json()
         return json.loads(df_json)
 
 @app.put('/update/{name}')
 def update(name:str):
-
     if name in df.columns:
-        for i in df.columns:
-            for j in df.index:
-                df.loc[j,i]=df.loc[j,i]+1        
+        for i in df.index:
+            df.loc[i,name]=df.loc[i,name]+1        
         df_json=df.to_json()
         return json.loads(df_json)
     else:
