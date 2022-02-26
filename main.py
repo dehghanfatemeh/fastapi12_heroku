@@ -22,28 +22,29 @@ class stu(BaseModel):
 
 @app.get('/')
 def read():
-    df.drop(index='ave',axis=0,inplace=True)
+    # df.drop(index='ave',axis=0,inplace=True)
     df_json=df.to_json()
     return json.loads(df_json)
 
 @app.get('/average')
 def average():
-    a=[]
+    a={}
     for i in df.columns:
         s=df[i].mean()
-        a.append(s)
-        s=0
-    df.loc['ave']=a
-    df_json=df.to_json()
-    return json.loads(df_json)
+        i={i:s}
+        a.update(i)
+    a=pd.Series(a)
+    a_json=a.to_json()
+    return json.loads(a_json)
+
 
 @app.post('/insert/')
 def insert(student:stu):
     if student.name in df.columns:
             raise HTTPException(status_code=404,detail='This student is available')
     else:    
-        s=(student.number1+student.number2+student.number3)/3
-        df[student.name]=[student.number1,student.number2,student.number3,s]
+        # s=(student.number1+student.number2+student.number3)/3
+        df[student.name]=[student.number1,student.number2,student.number3]
         df_json=df.to_json()
         return json.loads(df_json)
 
