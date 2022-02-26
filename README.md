@@ -148,7 +148,7 @@ def read():
 
 
 
-Using the get method, calculate the average score of each student and finally display the output as json:
+Using the get method, calculate the average score of each student and finally show only the average of each student, finally display the output as json:
 ```python
 @app.get('/average')
 def average():
