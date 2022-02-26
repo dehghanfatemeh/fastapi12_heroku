@@ -168,4 +168,7 @@ def update(name:str):
         raise HTTPException(status_code=404,detail='This student is not available')
 ```
 
+Uses the delete method to delete only the student name entered by the user and in the absence of such a name gives the user an error,
+finally the output is displayed as json
+
 
