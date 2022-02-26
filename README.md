@@ -215,8 +215,11 @@ def avg():
 
 -------------------------------------
 
-Only deployed app on the web using Hiroku
+Only deployed app on the web using Heroku
 link : https://shielded-plateau-68883.herokuapp.com/docs#/
+
+To output app2 (actually calling app) by typing the `uvicorn main:app2 --reload` command in the terminal
+
 
 
 
