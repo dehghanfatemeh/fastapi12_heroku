@@ -22,7 +22,6 @@ class stu(BaseModel):
 
 @app.get('/')
 def read():
-    # df.drop(index='ave',axis=0,inplace=True)
     df_json=df.to_json()
     return json.loads(df_json)
 
