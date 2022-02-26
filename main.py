@@ -1,4 +1,6 @@
+from re import S
 from fastapi import FastAPI,HTTPException
+from pydantic import BaseModel
 import json
 import pandas as pd
 app=FastAPI()
@@ -12,12 +14,19 @@ Students={
 
 df=pd.DataFrame(Students,columns=Students.keys())
 
+
+class stu(BaseModel):
+    name: str
+    number1: float
+    number2: float
+    number3: float
+
 @app.get('/')
 def read():
     df_json=df.to_json()
     return json.loads(df_json)
 
-@app.post('/average')
+@app.get('/average')
 def average():
     a=[]
     for i in df.columns:
@@ -28,13 +37,24 @@ def average():
     df_json=df.to_json()
     return json.loads(df_json)
 
+@app.post('/insert/')
+def insert(student:stu):
+    if student.name in df.columns:
+            raise HTTPException(status_code=404,detail='This student is available')
+    else:    
+        s=(student.number1+student.number2+student.number3)/3
+        df[student.name]=[student.number1,student.number2,student.number3,s]
+        df_json=df.to_json()
+        return json.loads(df_json)
+
 @app.put('/update/{name}')
 def update(name:str):
+    s=0
     if name in df.columns:
         for i in df.columns:
             for j in df.index:
                 if j!='ave':
-                    df.loc[j,i]=df.loc[j,i]+1
+                    df.loc[j,i]=df.loc[j,i]+1        
         df_json=df.to_json()
         return json.loads(df_json)
     else:
