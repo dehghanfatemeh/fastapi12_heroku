@@ -5,6 +5,17 @@ The program is written with [python](https://www.python.org/), [FastAPI](https:/
 
 Link api that I deployed on the web : https://shielded-plateau-68883.herokuapp.com/docs
 
+-------------------------------------
+
+In file main.py , I created two apps that only depoted app on the web using Heroku:
+link : https://shielded-plateau-68883.herokuapp.com/docs#/
+
+and To output app2 (actually calling app) by typing the `uvicorn main:app2 --reload` command in the terminal
+And the X address is written in the browser and you can see the output `http://127.0.0.1:8000/docs`
+
+
+
+
 ## Development construction and Deployment rocket
 If you want to contribute to the project, the best way is to fork the repository and make your own changes to the code and create a pull request.
 
@@ -213,13 +224,7 @@ def avg():
 ```
 
 
--------------------------------------
 
-Only deployed app on the web using Heroku
-link : https://shielded-plateau-68883.herokuapp.com/docs#/
-
-To output app2 (actually calling app) by typing the `uvicorn main:app2 --reload` command in the terminal
-And the X address is written in the browser and you can see the output `http://127.0.0.1:8000/docs`
 
 
 
