@@ -17,7 +17,7 @@ and the `http://127.0.0.1:8000/docs` address is written in the browser and you c
 
 
 
-## Development construction and Deployment rocket
+## Development and Deployment
 If you want to contribute to the project, the best way is to fork the repository and make your own changes to the code and create a pull request.
 
 A few steps to get started:
